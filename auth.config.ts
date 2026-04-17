@@ -15,14 +15,20 @@ export const authConfig: NextAuthConfig = {
     signIn: "/login",
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
-      const protectedPrefixes = ["/dashboard", "/expenses", "/savings", "/insights"];
-      const isProtected = protectedPrefixes.some((p) => nextUrl.pathname.startsWith(p));
-      if (isProtected && !isLoggedIn) {
-        return Response.redirect(new URL("/login", nextUrl));
-      }
-      return true;
-    },
+    authorized({ auth, request }) {
+  const { nextUrl } = request;
+
+  const isLoggedIn = !!auth?.user;
+  const protectedPrefixes = ["/dashboard", "/expenses", "/savings", "/insights"];
+  const isProtected = protectedPrefixes.some((p) =>
+    nextUrl.pathname.startsWith(p)
+  );
+
+  if (isProtected && !isLoggedIn) {
+    return Response.redirect(new URL("/login", request.url));
+  }
+
+  return true;
+}
   },
 };
