@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --animate-blob-slow: blobFloat 9s ease-in-out infinite;
+  --animate-blob-med: blobFloat 11s ease-in-out infinite;
+  --animate-blob-fast: blobFloat 7s ease-in-out infinite;
+  --animate-float-slow: floatY 8s ease-in-out infinite;
+  --animate-float-med: floatY 10s ease-in-out infinite 0.5s;
+  --animate-float-fast: floatY 7s ease-in-out infinite 1s;
+  --animate-fade-up: fadeUp 0.6s ease both;
+  --animate-fade-up-2: fadeUp 0.65s 0.1s ease both;
+  --animate-fade-up-3: fadeUp 0.7s 0.2s ease both;
+  --animate-fade-up-4: fadeUp 0.75s 0.3s ease both;
+  --animate-spin-slow: spin 30s linear infinite;
+  --animate-spin-reverse: spin 45s linear infinite reverse;
+}
+
+@keyframes blobFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(3deg);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Range slider thumb — dark theme */
+input[type="range"] {
+  appearance: none;
+  height: 5px;
+  border-radius: 99px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #a78bfa;
+  border: 2px solid rgba(167, 139, 250, 0.4);
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.4);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+/* Green variant for investment rate */
+input[type="range"].green::-webkit-slider-thumb {
+  background: #34d399;
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+}
+/* GLOBAL UI FIX (works for all pages) */
+
+body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Fix white cards */
+.bg-white {
+  background-color: #1e293b !important;
+}
+
+/* Fix light text */
+.text-gray-500,
+.text-gray-600,
+.text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+/* Fix borders */
+.border,
+.border-gray-200 {
+  border-color: #334155 !important;
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  background-color: #020617 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #334155 !important;
+}
